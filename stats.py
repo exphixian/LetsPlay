@@ -11,7 +11,7 @@ if roll == "yes":
             print("Please determine which variable will be used for which attribute.")
             break
 else:
-    print ("Please enter only base values.")
+    print("Please enter only base values.")
 
 print("Class, race, and item variables will be added on later.")
 strength = int(input("Enter your base strength:"))
