@@ -1,8 +1,7 @@
 """Character stats.
 - Right now, the stats are randomly generated between 4 and 18
 """
-roll = input("Do you want your stats to be randomized?")
-roll = str.lower(roll)
+roll = str.lower(input("Do you want your stats to be randomized?"))
 if roll == "yes":
     while True:
         for i in range(6):
