@@ -3,7 +3,6 @@
 """
 roll = input("Do you want your stats to be randomized?")
 roll = str.lower(roll)
-#roll = "no"
 if roll == "yes":
 #    print("This is still underdevelopment.")
     while True:
