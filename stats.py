@@ -8,7 +8,7 @@ if roll == "yes":
             print(random.randint(4,18))
         reroll = input("Do you want to keep these stats?")
         if reroll == "yes":
-            print("Please determine which variables will be used for each stat.")
+            print("Please determine which variable will be used for which attribute.")
             break
 else:
     print ("Please enter only base values.")
