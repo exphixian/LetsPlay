@@ -1,9 +1,9 @@
 def main():
+    name = input("Please enter your character's name:")
     print("%s can be a fighter, a mage, or a rogue." % (name))
     run = True
-    name = input("Please enter your character's name:")
     job = input("Please select your class:")
-    while run == True:
+    while True:
         if job == "fighter":
             playerhp = 300
             playerattack = 60
