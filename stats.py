@@ -1,5 +1,5 @@
 """Character stats.
-- Right now, the stats are randomly generated between 4 and 18
+- Right now, the stats are randomly generated between 4 and 18 (4 6-sided dice, dropping the lowest roll.)
 """
 roll = str.lower(input("Do you want your stats to be randomized?"))
 if roll == "yes":
