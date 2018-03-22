@@ -37,5 +37,4 @@ def main():
         else:
             job = input("Sorry, please select a valid class:")
             
-if __name__ == "__main__":
-    main()
+main()
