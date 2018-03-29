@@ -35,17 +35,13 @@ def setstats():
     charisma = int(input("Enter your base charisma:\n"))
     print()
 
-setstats()
-stats = [strength, constitution, dexterity, intelligence, wisdom, charisma]
-print(" STR: %s\n CON: %s\n DEX: %s\n INT: %s\n WIS: %s\n CHA: %s\n" % tuple(stats))
-
-"""First the character needs a name, race, and a gender
+"""The character needs a name, race, and a gender
 Need to figure out how to randomize names from multiple databases or multiple columns.
 Since random name will be influenced by race and gender, should probably have that last...
 Need to look through the 3.5 book for race stat variables."""
 
 def charsettings():
-    global gender
+    global strength, constitution, dexterity, charisma, intelligence, wisdom, race, gender, name, job
     gender = str.lower(input("Are you going to be playing as a male or a female?\n"))
     while True:
         if gender in ["female", "girl", "woman", "chick", "gal"]:
@@ -66,8 +62,7 @@ def charsettings():
     """
     print("Please select your character's species")
     while True:
-    global race
-    race = str.lower(input("This can be: human, dwarf, elf, gnome, half-elf, half-orc, or halfling.\n"))
+        race = str.lower(input("This can be: human, dwarf, elf, gnome, half-elf, half-orc, or halfling.\n"))
         if race == "human":
             print("This race does not have any attribute adjustments")
             language = ["common"]
@@ -116,21 +111,22 @@ def charsettings():
             break
         else:
             print("That is not a valid race.")
-    #For Troubleshooting
+    #For troubleshooting
     #print(race)
     print()
 
-    global name
     name = str(input("Choose a name for your %s %s.\n" % (gender, race)))
-
-
 
     """Picking a class.
     Need to go through 3.5 core for classes to get stat variables."""
-    global job
     job = str.lower(input("Please choose your character's class:"))
 
     """Skills, languages, & saves
     Need to go through and add stuff based on race and class.  Use if since it is automatically done."""
 
+setstats()
 charsettings()
+
+print("%s will be a %s %s %s." % (name, gender, job, race))
+stats = [strength, constitution, dexterity, intelligence, wisdom, charisma]
+print("With the following stats:\n STR: %s\n CON: %s\n DEX: %s\n INT: %s\n WIS: %s\n CHA: %s\n" % tuple(stats))
