@@ -24,7 +24,7 @@ def setstats():
 
     print("Class, race, and item variables will be added on later.\n")
     
-    #The name of stats can be changed as needed.  Since this is D&D 3.5, we will be using the following.
+    #The name of stats can be changed as needed.  Since I'm writing for a D&D 3.5 script, I will be using the following.
     strength = int(input("Enter your base strength:\n"))
     constitution = int(input("Enter your base constitution:\n"))
     dexterity = int(input("Enter your base dexterity:\n"))
