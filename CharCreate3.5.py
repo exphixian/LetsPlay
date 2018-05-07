@@ -1,34 +1,19 @@
 import random
 import datetime
 
-"""
-Need to set up dice rolls to be random each time. Currently static
-d100 = random.randint(1, 100)
-d20 = random.randint(1, 20)
-d12 = random.randint(1, 12)
-d10 = random. randint(1, 10)
-d8 = random.randint(1, 8)
-d6 = random.randint(1, 6)
-d4 = random.randint(1, 4)
-
-print(d20)
-print(d20)
-"""
-
 print()
 print(str.upper("Welcome to D&D 3.5 character creation.\n"))
 
 def setstats():
-    """Character stats.
-    - Right now, the stats are randomly generated between 4 and 18 (4 6-sided dice, dropping the lowest roll.)
-    """
+    
+    #Right now, stats are randomly generated between 4 and 18 (4 6-sided dice, dropping the lowest roll.)
+    
     global strength, constitution, dexterity, intelligence, wisdom, charisma
     roll = str.lower(input("Do you want your stats to be randomized?\n"))
 
     # Change roll to no in order to remove random stat generation.
     # roll = no
-
-    if roll == "yes":
+    if roll in ["yes", "y", "ye", "yea", "sure"]:
         while True:
             for i in range(6):
                 print(random.randint(4,18))
@@ -51,48 +36,50 @@ def setstats():
     print()
 
 
-"""The character needs a name, race, and a gender
+"""
+The character needs a name, race, and a gender
 Need to figure out how to randomize names from multiple databases or multiple columns.
-Since random name will be influenced by race and gender, should probably have that last...
-Need to look through the 3.5 book for race stat variables."""
+"""
 
 def charsettings():
-    global strength, constitution, dexterity, charisma, intelligence, wisdom, race, job, language, size, modifiers
+    global strength, constitution, dexterity, charisma, intelligence, wisdom, race, job, language, size, modifiers, hp
 
-    """Choosing Character Race
-    -This will need to add to the stats based on race.  Will do using loops wooo.
     """
-    print("Please select your character's species")
+    Choosing Character Race
+    -Need to go through and add rest of race info.  Mostly just bookwork and defining specific lists (like skills...)
+    """
+    
+    print("Please select your character's species.")
     while True:
         race = str.lower(input("This can be: human, dwarf, elf, gnome, half-elf, half-orc, or halfling.\n"))
         if race == "human":
-            print("This race does not have any attribute adjustments")
+            print("This race does not have any attribute adjustments.")
             language = ["common"]
             size = "medium"
             break
         elif race == "dwarf":
             constitution += 2
             charisma -= 2
-            print("Your CON is now %s and your CHA is now %s\n" % (constitution, charisma))
+            print("Your CON is now %s and your CHA is now %s.\n" % (constitution, charisma))
             language = ["dwarven", "common"]
             size = "medium"
             break
         elif race == "elf":
             dexterity += 2
             constitution -= 2
-            print("Your DEX is now %s and your CON is now %s\n" % (dexterity, constitution))
+            print("Your DEX is now %s and your CON is now %s.\n" % (dexterity, constitution))
             language = ["elven", "common"]
             size = "medium"
             break
         elif race == "gnome":
             constitution += 2
             strength -= 2
-            print("Your CON is now %s and your STR is now %s\n" % (constitution, strength))
+            print("Your CON is now %s and your STR is now %s.\n" % (constitution, strength))
             language = ["gnome", "common"]
             size = "small"
             break
         elif race == "half-elf":
-            print("This race does not have any attribute adjustments")
+            print("This race does not have any attribute adjustments.")
             language = ["elven", "common"]
             size = "medium"
             break
@@ -113,18 +100,25 @@ def charsettings():
             break
         else:
             print("That is not a valid race.")
+    
     #For troubleshooting
     #print(race)
+    
     print()
 
-    """Right now, negative numbers are off.  Need to adj"""
+    """
+    Right now, negative numbers are rounding badly.  Need to adj.  Possibly loop for if num < 10, - .5 for modifiers only?
+    """
     modifiers = [int((strength - 10)/2), int((constitution - 10)/2), int((dexterity - 10)/2), int((intelligence - 10)/2), int((wisdom - 10)/2), int((charisma - 10)/2)]
+    
     #For troubleshooting
     #print(modifiers)
 
-
-    """Picking a class.
-    Need to go through 3.5 core for classes to get stat variables."""
+    """
+    Picking a class.
+    Need to go through 3.5 core for classes to get stat variables.
+    """
+    
     print("Please choose your character's class:")
     while True:
         job = str.lower(input("This can be: barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, or wizard.\n"))
@@ -178,8 +172,10 @@ def charsettings():
     print("At level one, your HP is " + str(hp) + " and you will be using a %s when you level up." % (hpDie))
 
 
-    """Skills, languages, & saves
-    Need to go through and add stuff based on race and class.  Use if since it is automatically done."""
+    """
+    Skills, languages, & saves
+    Need to go through and determine stuff based on modifiers.  Loooots of book work.
+    """
 
 def chardesign():
     global name, gender, age
@@ -211,3 +207,9 @@ stats = [strength, constitution, dexterity, intelligence, wisdom, charisma]
 print("%s will be a %s year old %s %s %s" % (name, age, gender, job, race) +
       " with the following stats:\n STR: %s\n CON: %s\n DEX: %s\n INT: %s\n WIS: %s\n CHA: %s\n" % tuple(stats))
 print()
+
+"""
+Eventually, this will print out to a specific character sheet or just send it out to a word doc or something.
+Need to specify which sheet or what program it will save to (they will chose a name for the file)
+And then an option to print the sheet out?
+"""
